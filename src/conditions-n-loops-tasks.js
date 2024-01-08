@@ -21,9 +21,7 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
-}
+const isPositive = (number) => number >= 0;
 
 /**
  * Returns the maximum of three numbers without using Array and Math classes methods.
@@ -38,9 +36,11 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
-}
+const getMaxNumber = (a, b, c) => {
+  if (a > b && a > c) return a;
+  if (b > a && b > c) return b;
+  return c;
+};
 
 /**
  * Checks if a queen can capture a king in the next move on an 8x8 chessboard.
@@ -82,9 +82,9 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
+const isIsoscelesTriangle = (/* a, b, c */) => {
   throw new Error('Not implemented');
-}
+};
 
 /**
  * Converts a number to Roman numerals. The number will be between 1 and 39.
@@ -100,9 +100,34 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
+const convertToRomanNumerals = (/* num */) => {
+  // const romansNum = {
+  //   0: '',
+  //   1: 'I',
+  //   2: 'II',
+  //   3: 'III',
+  //   4: 'IV',
+  //   5: 'V',
+  //   6: 'VI',
+  //   7: 'VII',
+  //   8: 'VIII',
+  //   9: 'IX',
+  //   10: 'X',
+  //   20: 'XX',
+  //   30: 'XXX',
+  // };
+  // const numToStr = num.toString();
+  // let res = '';
+  // if (numToStr.length === 2) {
+  //   for (let i = 2; i === numToStr.length; i += 1) {
+  //     res += romansNum[numToStr[0] * 10] + romansNum[numToStr[1]];
+  //   }
+  // } else {
+  //   res += romansNum[numToStr[0]];
+  // }
+  // return res;
   throw new Error('Not implemented');
-}
+};
 
 /**
  * Converts a number to a string, replacing digits with words.
@@ -119,8 +144,30 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  const obj = {
+    '-': 'minus',
+    '.': 'point',
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
+  let res = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    if (i === 0) {
+      res += obj[numberStr[i]];
+    } else {
+      res += ' '`${obj[numberStr[i]]}`;
+    }
+  }
+  return res;
 }
 
 /**
@@ -135,9 +182,13 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
-}
+const isPalindrome = (str) => {
+  let reverseStr = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reverseStr += str[i];
+  }
+  return reverseStr === str;
+};
 
 /**
  * Finds the first occurrence of a letter in a string.
@@ -172,9 +223,18 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
-}
+const isContainNumber = (num, digit) => {
+  let rest;
+  let test = num;
+  while (test) {
+    rest = test % 10;
+    if (rest === digit) {
+      return true;
+    }
+    test = (test - rest) / 10;
+  }
+  return false;
+};
 
 /**
  * Finds the index of an element in an array where the sum of elements to the left equals the sum of elements to the right.
