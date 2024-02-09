@@ -82,9 +82,7 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-const isIsoscelesTriangle = (/* a, b, c */) => {
-  throw new Error('Not implemented');
-};
+const isIsoscelesTriangle = (a, b, c) => a + b > c && a + c > b && b + c > a;
 
 /**
  * Converts a number to Roman numerals. The number will be between 1 and 39.
@@ -100,7 +98,8 @@ const isIsoscelesTriangle = (/* a, b, c */) => {
  *  10  => X
  *  26  => XXVI
  */
-const convertToRomanNumerals = (/* num */) => {
+function convertToRomanNumerals(/* num */) {
+  throw new Error('Not implemented');
   // const romansNum = {
   //   0: '',
   //   1: 'I',
@@ -126,8 +125,7 @@ const convertToRomanNumerals = (/* num */) => {
   //   res += romansNum[numToStr[0]];
   // }
   // return res;
-  throw new Error('Not implemented');
-};
+}
 
 /**
  * Converts a number to a string, replacing digits with words.
@@ -144,30 +142,32 @@ const convertToRomanNumerals = (/* num */) => {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(numberStr) {
-  const obj = {
-    '-': 'minus',
-    '.': 'point',
-    0: 'zero',
-    1: 'one',
-    2: 'two',
-    3: 'three',
-    4: 'four',
-    5: 'five',
-    6: 'six',
-    7: 'seven',
-    8: 'eight',
-    9: 'nine',
-  };
-  let res = '';
-  for (let i = 0; i < numberStr.length; i += 1) {
-    if (i === 0) {
-      res += obj[numberStr[i]];
-    } else {
-      res += ' '`${obj[numberStr[i]]}`;
-    }
-  }
-  return res;
+function convertNumberToString(/* numberStr */) {
+  throw new Error('Not implemented');
+  // const obj = {
+  //   '-': 'minus',
+  //   '.': 'point',
+  //   ',': 'point',
+  //   0: 'zero',
+  //   1: 'one',
+  //   2: 'two',
+  //   3: 'three',
+  //   4: 'four',
+  //   5: 'five',
+  //   6: 'six',
+  //   7: 'seven',
+  //   8: 'eight',
+  //   9: 'nine',
+  // };
+  // let res = '';
+  // for (let i = 0; i < numberStr.length; i += 1) {
+  //   if (i === 0) {
+  //     res += obj[numberStr[i]];
+  //   } else {
+  //     res += ` ${obj[numberStr[i]]}`;
+  //   }
+  // }
+  // return res;
 }
 
 /**
@@ -204,9 +204,12 @@ const isPalindrome = (str) => {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
-}
+const getIndexOf = (str, letter) => {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) return i;
+  }
+  return -1;
+};
 
 /**
  * Checks if a number contains a specific digit.
@@ -334,6 +337,20 @@ function sortByAsc(/* arr */) {
  */
 function shuffleChar(/* str, iterations */) {
   throw new Error('Not implemented');
+  // let even = '';
+  // let odd = '';
+  // for (let i = 0; i < str.length; i += 1) {
+  //   if (i % 2 === 0) {
+  //     even += str[i];
+  //   } else {
+  //     odd += str[i];
+  //   }
+  // }
+  // const strRes = even + odd;
+  // if (iterations > 1) {
+  //   return shuffleChar(strRes, iterations - 1);
+  // }
+  // return strRes;
 }
 
 /**
