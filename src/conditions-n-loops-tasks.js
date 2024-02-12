@@ -60,8 +60,10 @@ const getMaxNumber = (a, b, c) => {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (queen.x === king.x || queen.y === king.y) return true;
+  if (Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)) return true;
+  return false;
 }
 
 /**
@@ -98,34 +100,28 @@ const isIsoscelesTriangle = (a, b, c) => a + b > c && a + c > b && b + c > a;
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
-  // const romansNum = {
-  //   0: '',
-  //   1: 'I',
-  //   2: 'II',
-  //   3: 'III',
-  //   4: 'IV',
-  //   5: 'V',
-  //   6: 'VI',
-  //   7: 'VII',
-  //   8: 'VIII',
-  //   9: 'IX',
-  //   10: 'X',
-  //   20: 'XX',
-  //   30: 'XXX',
-  // };
-  // const numToStr = num.toString();
-  // let res = '';
-  // if (numToStr.length === 2) {
-  //   for (let i = 2; i === numToStr.length; i += 1) {
-  //     res += romansNum[numToStr[0] * 10] + romansNum[numToStr[1]];
-  //   }
-  // } else {
-  //   res += romansNum[numToStr[0]];
-  // }
-  // return res;
-}
+const convertToRomanNumerals = (num) => {
+  const romansNum = {
+    0: '',
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+    20: 'XX',
+    30: 'XXX',
+  };
+  if (num > 10) {
+    const chekNum = num % 10 === 0 ? num : num - (num % 10);
+    return romansNum[chekNum] + romansNum[num % 10];
+  }
+  return romansNum[num];
+};
 
 /**
  * Converts a number to a string, replacing digits with words.
@@ -142,32 +138,55 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
-  // const obj = {
-  //   '-': 'minus',
-  //   '.': 'point',
-  //   ',': 'point',
-  //   0: 'zero',
-  //   1: 'one',
-  //   2: 'two',
-  //   3: 'three',
-  //   4: 'four',
-  //   5: 'five',
-  //   6: 'six',
-  //   7: 'seven',
-  //   8: 'eight',
-  //   9: 'nine',
-  // };
-  // let res = '';
-  // for (let i = 0; i < numberStr.length; i += 1) {
-  //   if (i === 0) {
-  //     res += obj[numberStr[i]];
-  //   } else {
-  //     res += ` ${obj[numberStr[i]]}`;
-  //   }
-  // }
-  // return res;
+function convertNumberToString(numberStr) {
+  let res = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    if (i > 0) res += ' ';
+    switch (numberStr[i]) {
+      case '-':
+        res += 'minus';
+        break;
+      case '.':
+        res += 'point';
+        break;
+      case ',':
+        res += 'point';
+        break;
+      case '0':
+        res += 'zero';
+        break;
+      case '1':
+        res += 'one';
+        break;
+      case '2':
+        res += 'two';
+        break;
+      case '3':
+        res += 'three';
+        break;
+      case '4':
+        res += 'four';
+        break;
+      case '5':
+        res += 'five';
+        break;
+      case '6':
+        res += 'six';
+        break;
+      case '7':
+        res += 'seven';
+        break;
+      case '8':
+        res += 'eight';
+        break;
+      case '9':
+        res += 'nine';
+        break;
+      default:
+        res = '';
+    }
+  }
+  return res;
 }
 
 /**
